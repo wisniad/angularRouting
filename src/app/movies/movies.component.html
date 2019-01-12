@@ -1,0 +1,36 @@
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tytul</th>
+      <th scope="col">Rok</th>
+      <th scope="col">Usun</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>
+        *Add
+      </th>
+      <th>
+        <input [(ngModel)]="newTitle" placeholder="New title" />
+      </th>
+      <th>
+        <input [(ngModel)]="newYear" placeholder="New year"/>
+      </th>
+      <th>
+        <button (click)="addNewMovie()" class="btn btn-success">Add new movie</button>
+      </th>
+    </tr>
+    <tr *ngFor="let movie of movies; let i = index;">
+      <th scope="row">{{i + 1}}</th>
+      <th>{{movie.title}}</th>
+      <th>{{movie.year}}</th>
+      <th>
+        <button [routerLink]="[movie.id]" class="btn btn-info">Opis</button>
+        <button (click)="removeMovie(movie.title)" class="btn btn-danger">Usun</button>
+      </th>
+    </tr>
+  </tbody>
+</table>
+<router-outlet></router-outlet>
